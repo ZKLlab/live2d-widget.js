@@ -3,9 +3,9 @@
  */
 
 
-import { config } from './config/configMgr';
-import { L2Dwidget } from './index';
-import { createDialogElement } from './dialog';
+import {config} from './config/configMgr';
+import {L2Dwidget} from './index';
+import {createDialogElement} from './dialog';
 
 /**
  * The current WebGL element
@@ -29,7 +29,7 @@ let currCanvas;
 
 function createElement() {
 
-  let e = document.getElementById(config.name.div)
+  let e = document.getElementById(config.name.div);
   if (e !== null) {
     document.body.removeChild(e);
   }
@@ -88,20 +88,21 @@ function initWebGL() {
         failIfMajorPerformanceCaveat: false,
       });
       if (ctx) currWebGL = ctx;
-    } catch (e) { }
+    } catch (e) {
+    }
   }
   if (!currWebGL) {
     console.error('Live2D widgets: Failed to create WebGL context.');
     if (!window.WebGLRenderingContext) {
       console.error('Your browser may not support WebGL, check https://get.webgl.org/ for futher information.');
     }
-    return;
+
   }
-};
+}
 
 
 export {
   createElement,
   currWebGL,
   currCanvas,
-}
+};

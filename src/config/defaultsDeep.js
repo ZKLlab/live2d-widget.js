@@ -6,11 +6,11 @@ module.exports = function defaultsDeep(target, objects) {
   function copy(target, current) {
     for (var key in current) {
       if (current.hasOwnProperty(key)) {
-        var value = current[key]
+        var value = current[key];
         if (key === '__proto__') {
           continue;
         }
-        
+
         var val = target[key];
         // add the missing property, or allow a null property to be updated
         if (val == null) {

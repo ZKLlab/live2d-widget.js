@@ -1,7 +1,7 @@
-import { Live2DFramework } from "./lib/Live2DFramework";
-import { PlatformManager } from "./PlatformManager";
-import { cModel } from "./cModel";
-import { cDefine } from "./cDefine";
+import {Live2DFramework} from './lib/Live2DFramework';
+import {PlatformManager} from './PlatformManager';
+import {cModel} from './cModel';
+import {cDefine} from './cDefine';
 
 function cManager(eventemitter) {
   // console.log("--> cManager()");
@@ -23,7 +23,7 @@ cManager.prototype.createModel = function () {
 
   return model;
 
-}
+};
 
 
 cManager.prototype.changeModel = function (gl, modelurl) {
@@ -48,7 +48,6 @@ cManager.prototype.getModel = function (no) {
 };
 
 
-
 cManager.prototype.releaseModel = function (no, gl) {
   // console.log("--> cManager.releaseModel(" + no + ")");
 
@@ -61,37 +60,34 @@ cManager.prototype.releaseModel = function (no, gl) {
 };
 
 
-
 cManager.prototype.numModels = function () {
   return this.models.length;
 };
-
 
 
 cManager.prototype.setDrag = function (x, y) {
   for (var i = 0; i < this.models.length; i++) {
     this.models[i].setDrag(x, y);
   }
-}
+};
 
 cManager.prototype.tapEvent = function (x, y) {
   if (cDefine.DEBUG_LOG)
-    console.log("tapEvent view x:" + x + " y:" + y);
+    console.log('tapEvent view x:' + x + ' y:' + y);
 
   for (var i = 0; i < this.models.length; i++) {
 
     if (this.models[i].hitTest(cDefine.HIT_AREA_HEAD, x, y)) {
       this.eventemitter.emit('tapface');
-      
+
       if (cDefine.DEBUG_LOG)
-        console.log("Tap face.");
+        console.log('Tap face.');
 
       this.models[i].setRandomExpression();
-    }
-    else if (this.models[i].hitTest(cDefine.HIT_AREA_BODY, x, y)) {
+    } else if (this.models[i].hitTest(cDefine.HIT_AREA_BODY, x, y)) {
       this.eventemitter.emit('tapbody');
       if (cDefine.DEBUG_LOG)
-        console.log("Tap body." + " models[" + i + "]");
+        console.log('Tap body.' + ' models[' + i + ']');
 
       this.models[i].startRandomMotion(cDefine.MOTION_GROUP_TAP_BODY,
         cDefine.PRIORITY_NORMAL);
@@ -101,6 +97,6 @@ cManager.prototype.tapEvent = function (x, y) {
   return true;
 };
 
-export{
+export {
   cManager,
-}
+};

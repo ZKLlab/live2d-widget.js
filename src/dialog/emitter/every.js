@@ -1,8 +1,7 @@
-
 function parseTime(sourcetime) {
-  const secondsRe = /^(\d+)(s|seconds?)$/g
-  const millisecondsRe = /^(\d+)(ms|milliseconds?)$/g
-  const minutesRe = /^(\d+)(m|minutes?)$/g
+  const secondsRe = /^(\d+)(s|seconds?)$/g;
+  const millisecondsRe = /^(\d+)(ms|milliseconds?)$/g;
+  const minutesRe = /^(\d+)(m|minutes?)$/g;
   const time = sourcetime.toLowerCase();
   let resultMillisecond = 0;
   if (secondsRe.test(time)) {
@@ -23,14 +22,14 @@ function everyEmitter(engine) {
     let sourcetime, idle;
     if (args.length === 1) {
       sourcetime = args[0];
-      idle = false
+      idle = false;
     } else if (args.length === 2) {
       sourcetime = args[1];
       idle = args[0] === 'idle';
     } else {
       return;
     }
-    const resultMillisecond = parseTime(sourcetime)
+    const resultMillisecond = parseTime(sourcetime);
     if (!resultMillisecond) return;
 
     let timeout = null;
@@ -42,7 +41,7 @@ function everyEmitter(engine) {
         if (timeout) clearTimeout(timeout);
         timeout = setTimeout(func, resultMillisecond);
       }
-    }
+    };
 
     engine.on('emit', () => {
       if (idle) {
@@ -52,7 +51,7 @@ function everyEmitter(engine) {
     });
 
     func();
-  }
+  };
 }
 
 module.exports = {

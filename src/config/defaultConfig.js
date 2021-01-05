@@ -39,6 +39,6 @@ const defaultConfig = {
     enable: false,
     script: null
   }
-}
+};
 
 module.exports = defaultConfig;

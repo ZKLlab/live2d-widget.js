@@ -1,11 +1,11 @@
-import { config } from '../config/configMgr';
-import { ScriptEngine } from './script';
-import { L2Dwidget } from '../index';
-import { everyEmitter } from './emitter/every';
-import { hoverEmitter } from './emitter/hover';
-import { tapbodyEmitter } from './emitter/tapbody'; 
-import { tapfaceEmitter } from './emitter/tapface'; 
-import { hitokotoVariable } from './variable/hitokoto';
+import {config} from '../config/configMgr';
+import {ScriptEngine} from './script';
+import {L2Dwidget} from '../index';
+import {everyEmitter} from './emitter/every';
+import {hoverEmitter} from './emitter/hover';
+import {tapbodyEmitter} from './emitter/tapbody';
+import {tapfaceEmitter} from './emitter/tapface';
+import {hitokotoVariable} from './variable/hitokoto';
 
 const dialogStyle = document.createElement('style');
 dialogStyle.innerHTML = `
@@ -42,7 +42,7 @@ dialogStyle.innerHTML = `
   }`;
 document.head.appendChild(dialogStyle);
 
-let containerElement,dialogElement,closeTimer;
+let containerElement, dialogElement, closeTimer;
 
 /**
  * 创建对话框元素
@@ -58,7 +58,7 @@ function createDialogElement(root) {
   root.appendChild(containerElement);
 
   L2Dwidget.emit('create-dialog', containerElement);
-  
+
   if (config.dialog.script) {
     const scriptEngine = new ScriptEngine(alertText);
     scriptEngine.registerEmitter('every', everyEmitter(scriptEngine));
